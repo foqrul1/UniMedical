@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="Wellcome_Text">Wellcome to Our University</string>
+
+    <string-array name="Department">
+        <item>Selecet your Department</item>
+        <item>Arch</item>
+        <item>Civil</item>
+        <item>CSE</item>
+        <item>EEE</item>
+        <item>Mechanical</item>
+    </string-array>
+    <string-array name="Speciality">
+        <item>Select your Speciality</item>
+        <item>Genral</item>
+        <item>Medicine</item>
+        <item>Sergon</item>
+        <item>Neuro</item>
+    </string-array>
+    <string-array name="Availability">
+        <item>Select your Avvailable Time</item>
+        <item>7AM-9AM</item>
+        <item>9AM-11AM</item>
+        <item>11AM-1PM</item>
+        <item>1PM-3PM</item>
+        <item>3PM-5PM</item>
+        <item>5PM-7PM</item>
+        <item>7PM-10PM</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="permission_not_granted">Permission not granted!</string>
+    <string name="no_internet">No internet!</string>
+    <string name="connect">Connect</string>
+
+
+</resources>

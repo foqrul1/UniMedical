@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "795829173857",
+    "project_id": "unimedicalsystem",
+    "storage_bucket": "unimedicalsystem.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:795829173857:android:d3e643211b44afa10cf420",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "795829173857-k4s2etaatvfjrs0frngq1qlmntknftit.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.myapplication",
+            "certificate_hash": "0293c6afcae4a0ddcd6cf180473587bbf78d5a53"
+          }
+        },
+        {
+          "client_id": "795829173857-efrgmot08mgmq217nuhnitmmlh2fr7nj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqGU4mTLsPA3idRJRlbkgT2e1baGy_0gA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "795829173857-efrgmot08mgmq217nuhnitmmlh2fr7nj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
