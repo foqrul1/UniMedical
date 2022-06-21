@@ -101,17 +101,11 @@ public class MessageActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recycler_view1);
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
+        linearLayoutManager.setReverseLayout(false);
         linearLayoutManager.setStackFromEnd(true);
         recyclerView.setLayoutManager(linearLayoutManager);
 
-
-        mchat = new ArrayList<>();
-        mchat.add(new Chat("Antor", "Foqrul", "Hello Bro","Message", true));
-        mchat.add(new Chat("Antor", "Foqrul", "Hello Bro","Message", true));
-        mchat.add(new Chat("Antor", "Foqrul", "Hello Bro","Message", true));
-        mchat.add(new Chat("Antor", "Foqrul", "Hello Bro","Message", true));
         messageAdapter = new MessageAdapter(MessageActivity.this, mchat, user_status);
-
         recyclerView.setAdapter(messageAdapter);
 
         profile_image = findViewById(R.id.profile_image);
@@ -330,8 +324,8 @@ public class MessageActivity extends AppCompatActivity {
                     if (chat.getReceiver().equals(myid) && chat.getSender().equals(userid) ||
                             chat.getReceiver().equals(userid) && chat.getSender().equals(myid)) {
                         mchat.add(chat);
-                        Toast.makeText(MessageActivity.this, mchat.size(), Toast.LENGTH_SHORT).show();
-                    }
+
+                          }
 
                 }
 

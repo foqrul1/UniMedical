@@ -11,16 +11,16 @@
         android:src="@mipmap/ic_launcher" />
 
     <TextView
+        android:id="@+id/show_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@id/profile_image"
         android:layout_marginStart="5dp"
-        android:text="Hello Left Message"
-        android:id="@+id/show_message"
-        android:textColor="@color/black"
-        android:textSize="18sp"
+        android:background="@drawable/background_left"
+        android:layout_toEndOf="@id/profile_image"
         android:padding="8dp"
-        android:background="@drawable/background_left"/>
+        android:text="Hello Left Message"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
 
     <ImageView
         android:layout_width="match_parent"

@@ -49,7 +49,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull MessageAdapter.ViewHolder holder, int position) {
-        Toast.makeText(mContext, "MessageAdapter", Toast.LENGTH_SHORT).show();
+      //  Toast.makeText(mContext, "MessageAdapter", Toast.LENGTH_SHORT).show();
         Chat chat = mChat.get(position);
         String image = chat.getMessage();
         if(chat.getType().equals("image")){
@@ -95,7 +95,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
 
     @Override
     public int getItemCount() {
-        return 0;
+        return mChat.size();
     }
     public static class ViewHolder extends RecyclerView.ViewHolder{
 

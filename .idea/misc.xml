@@ -35,6 +35,10 @@
         <entry key="..\:/Users/rahim/AndroidStudioProjects/UniMedicalSystem/app/src/main/res/layout/user_item.xml" value="0.1109375" />
         <entry key="..\:/Users/rahim/AndroidStudioProjects/UniMedicalSystem/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />
         <entry key="..\:/Users/rahim/AndroidStudioProjects/UniMedicalSystem/app/src/main/res/xml/user_item.xml" value="0.1109375" />
+        <entry key="app/src/main/res/drawable/background_left.xml" value="0.1945" />
+        <entry key="app/src/main/res/layout/activity_message.xml" value="0.17028985507246377" />
+        <entry key="app/src/main/res/layout/chat_item_left.xml" value="0.17028985507246377" />
+        <entry key="app/src/main/res/layout/chat_item_right.xml" value="0.17028985507246377" />
       </map>
     </option>
   </component>
