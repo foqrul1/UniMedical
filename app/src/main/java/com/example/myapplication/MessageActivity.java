@@ -311,7 +311,7 @@ public class MessageActivity extends AppCompatActivity {
     }
 
     private void readMesagges(final String myid, final String userid, final String imageurl) {
-        //mchat = new ArrayList<>();
+        mchat = new ArrayList<>();
 
         reference = FirebaseDatabase.getInstance().getReference("Chats");
         reference.addValueEventListener(new ValueEventListener() {
@@ -319,13 +319,15 @@ public class MessageActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    //mchat.clear();
+                    mchat.clear();
                     Chat chat = snapshot.getValue(Chat.class);
                     if (chat.getReceiver().equals(myid) && chat.getSender().equals(userid) ||
                             chat.getReceiver().equals(userid) && chat.getSender().equals(myid)) {
                         mchat.add(chat);
 
                           }
+                    messageAdapter = new MessageAdapter( MessageActivity.this,mchat, imageurl);
+                    recyclerView.setAdapter(messageAdapter);
 
                 }
 
