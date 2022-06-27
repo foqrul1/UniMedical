@@ -1,6 +1,8 @@
 package com.example.myapplication;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,7 +63,32 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
 
             Glide.with(mContext).load(image).placeholder(R.drawable.profile_pic).into(holder.imageMessage);
 
-        }else {
+        }
+        else if(chat.getType().equals("docs")){
+
+            //ic_docs
+
+            holder.show_message.setVisibility(View.GONE);
+            holder.imageMessage.setVisibility(View.VISIBLE);
+            holder.imageMessage.setImageDrawable(mContext.getDrawable(R.drawable.ic_doc__1_));
+
+            holder.imageMessage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    // Open for downloading...
+
+                    System.out.println("Log. ok Downloading Link,,, " + chat.getMessage());
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(chat.getMessage()));
+                    mContext.startActivity(browserIntent);
+
+                }
+            });
+
+
+
+        }
+        else {
 
 
             holder.imageMessage.setVisibility(View.GONE);

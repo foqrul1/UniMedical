@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/rahim/AndroidStudioProjects/UniMedicalSystem/app/src/main/res/drawable-v24/ic_cmera.xml" value="0.1" />
+        <entry key="..\:/Users/rahim/AndroidStudioProjects/UniMedicalSystem/app/src/main/res/drawable-v24/ic_doc__1_.xml" value="0.16197916666666667" />
+        <entry key="..\:/Users/rahim/AndroidStudioProjects/UniMedicalSystem/app/src/main/res/drawable-v24/ic_gallery.xml" value="0.1" />
         <entry key="..\:/Users/rahim/AndroidStudioProjects/UniMedicalSystem/app/src/main/res/drawable/background_left.xml" value="0.14814814814814814" />
         <entry key="..\:/Users/rahim/AndroidStudioProjects/UniMedicalSystem/app/src/main/res/drawable/background_right.xml" value="0.14814814814814814" />
         <entry key="..\:/Users/rahim/AndroidStudioProjects/UniMedicalSystem/app/src/main/res/drawable/bg_action_button.xml" value="0.14814814814814814" />
@@ -22,7 +25,7 @@
         <entry key="..\:/Users/rahim/AndroidStudioProjects/UniMedicalSystem/app/src/main/res/layout/activity_doctor.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/rahim/AndroidStudioProjects/UniMedicalSystem/app/src/main/res/layout/activity_login.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/rahim/AndroidStudioProjects/UniMedicalSystem/app/src/main/res/layout/activity_main.xml" value="0.13125" />
-        <entry key="..\:/Users/rahim/AndroidStudioProjects/UniMedicalSystem/app/src/main/res/layout/activity_message.xml" value="0.22" />
+        <entry key="..\:/Users/rahim/AndroidStudioProjects/UniMedicalSystem/app/src/main/res/layout/activity_message.xml" value="0.33" />
         <entry key="..\:/Users/rahim/AndroidStudioProjects/UniMedicalSystem/app/src/main/res/layout/activity_patient.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/rahim/AndroidStudioProjects/UniMedicalSystem/app/src/main/res/layout/activity_registration.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/rahim/AndroidStudioProjects/UniMedicalSystem/app/src/main/res/layout/chat_item_left.xml" value="0.25" />

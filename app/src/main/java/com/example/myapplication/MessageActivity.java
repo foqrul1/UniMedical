@@ -7,13 +7,16 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +29,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.bumptech.glide.Glide;
+import com.example.myapplication.attachments.AttachmentOption;
 import com.example.myapplication.util.PermissionUtils;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -64,8 +68,13 @@ public class MessageActivity extends AppCompatActivity {
     CircleImageView profile_image;
     TextView username;
 
+    ProgressDialog pd;
+    StorageReference storageRef, storageRef_Audio, storageRef_Docs;
+
     FirebaseUser fuser;
     DatabaseReference reference;
+
+    public static final int PICKFILE_REQUEST_CODE = 3;
 
     //Firebase
     private FirebaseAuth mAuth;
@@ -74,9 +83,9 @@ public class MessageActivity extends AppCompatActivity {
     String calledBy = "", user_uID;
 
     private StorageTask uploadTask;
-    StorageReference storageRef;
     private Uri mImageUri;
-    ImageButton btn_send, btn_img_send, audioCallBtn, videoCallBtn;
+    ImageButton btn_send, btn_img_send;
+    ImageView attachmentSend;
     EditText text_send;
 
     MessageAdapter messageAdapter;
@@ -125,6 +134,7 @@ public class MessageActivity extends AppCompatActivity {
         btn_send = findViewById(R.id.btn_send);
         btn_img_send = findViewById(R.id.btn_image_send);
         text_send = findViewById(R.id.text_send);
+        attachmentSend = findViewById(R.id.imageViewAttachment);
 
         intent = getIntent();
         userid = intent.getStringExtra("userid");
@@ -132,6 +142,7 @@ public class MessageActivity extends AppCompatActivity {
         username_another = intent.getStringExtra("username");
         user_status = intent.getStringExtra("status");
         fuser = FirebaseAuth.getInstance().getCurrentUser();
+        storageRef_Docs = FirebaseStorage.getInstance().getReference("MessageDocs");
         userImage = "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/profile-design-template-4c23db68ba79c4186fbd258aa06f48b3_screen.jpg?ts=1581063859";
 
        // initChatActions();
@@ -176,6 +187,12 @@ public class MessageActivity extends AppCompatActivity {
                     Toast.makeText(MessageActivity.this, "You can't send empty message", Toast.LENGTH_SHORT).show();
                 }
                 text_send.setText("");
+            }
+        });
+        attachmentSend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                handleDocument();
             }
         });
 
@@ -385,6 +402,40 @@ public class MessageActivity extends AppCompatActivity {
         currentUser("none");
     }
 
+
+    public void handleDocument() {
+        Intent intent;
+        if (android.os.Build.MANUFACTURER.equalsIgnoreCase("samsung")) {
+            intent = new Intent("com.sec.android.app.myfiles.PICK_DATA");
+            intent.putExtra("CONTENT_TYPE", "*/*");
+            intent.addCategory(Intent.CATEGORY_DEFAULT);
+        } else {
+
+            String[] mimeTypes =
+                    {"application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", // .doc & .docx
+                            "application/vnd.ms-powerpoint", "application/vnd.openxmlformats-officedocument.presentationml.presentation", // .ppt & .pptx
+                            "application/vnd.ms-excel", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", // .xls & .xlsx
+                            "text/plain",
+                            "application/pdf",
+                            "application/zip", "application/vnd.android.package-archive"};
+
+            intent = new Intent(Intent.ACTION_GET_CONTENT); // or ACTION_OPEN_DOCUMENT
+            intent.setType("*/*");
+            intent.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes);
+            intent.addCategory(Intent.CATEGORY_OPENABLE);
+            intent.putExtra(Intent.EXTRA_LOCAL_ONLY, true);
+        }
+
+//        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+//        intent.setType("file/*");
+        startActivityForResult(intent, PICKFILE_REQUEST_CODE);
+
+
+    }
+
+
+
+
     /*private void initChatActions() {
         chatActions = new ArrayList<>();
         chatActions.add("Salam");
@@ -456,7 +507,28 @@ public class MessageActivity extends AppCompatActivity {
 
             uploadImage_10();
 
-        } else {
+        }else if (requestCode == PICKFILE_REQUEST_CODE) {
+            //String Fpath = data.getDataString();
+            // do somthing...
+            if (data.getData() != null) {
+                //uploading the file
+                String path = data.getDataString();
+                String extension = data.getDataString().substring(data.getDataString().lastIndexOf("."));
+//                String type = data.getDataString().substring(data.getDataString().)
+                System.out.println("Log. ok " + data.getDataString() + " " + extension);
+                //String path=":/storage/sdcard0/DCIM/Camera/1414240995236.jpg";
+                // it contains your image path...I'm using a temp string...
+
+                String filename = path.substring(path.lastIndexOf("/") + 1);
+                uploadFile(data.getData(), extension, filename);
+
+            } else {
+                Toast.makeText(this, "No file chosen", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        else {
             Toast.makeText(this, "Something gone wrong!", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(MessageActivity.this, MainActivity.class));
             finish();
@@ -507,5 +579,43 @@ public class MessageActivity extends AppCompatActivity {
             pd.dismiss();
             Toast.makeText(MessageActivity.this, "No image selected", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void uploadFile(Uri data, String extension, final String filename) {
+
+        pd = new ProgressDialog(this);
+
+        pd.setMessage("Please Wait");
+        pd.show();
+
+        //progressBar.setVisibility(View.VISIBLE);
+        StorageReference sRef = storageRef_Docs.child("Docs/" + System.currentTimeMillis() + extension);
+
+
+        sRef.putFile(data).continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+            @Override
+            public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                if (!task.isSuccessful()) {
+
+                    pd.hide();
+                }
+                return sRef.getDownloadUrl();
+            }
+        }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+            @Override
+            public void onComplete(@NonNull Task<Uri> task) {
+                if (task.isSuccessful()) {
+                    Uri downUri = task.getResult();
+                    Log.d("Log. ", "onComplete: Url: " + downUri.toString());
+                    pd.hide();
+                    Toast.makeText(MessageActivity.this, " Successful", Toast.LENGTH_SHORT).show();
+                    System.out.println("Log. Url " + downUri.toString());
+                    String type = "docs";
+                    sendMessage(fuser.getUid(), userid, downUri.toString(), type);
+
+                }
+            }
+        });
+
     }
 }
