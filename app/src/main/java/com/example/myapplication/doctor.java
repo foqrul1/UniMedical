@@ -12,6 +12,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.TextUtils;
+import android.util.Base64;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -48,6 +49,7 @@ public class doctor extends AppCompatActivity {
     Spinner Availability, Speciality;
 
     Uri resultUri;
+    String photoURI;
 
     private FirebaseAuth mAuth;
     private DatabaseReference databaseReference;
@@ -156,6 +158,7 @@ public class doctor extends AppCompatActivity {
                                 userInfo.put("Phone", Mobile);
                                 userInfo.put("Available", available);
                                 userInfo.put("Special", speciality);
+                                userInfo.put("ImageURL", photoURI);
                                 userInfo.put("type", "Doctor");
 
                                 databaseReference.updateChildren(userInfo).
@@ -186,6 +189,11 @@ public class doctor extends AppCompatActivity {
                                     bitmap.compress(Bitmap.CompressFormat.JPEG, 20, byteArrayOutputStream);
                                     byte[] data = byteArrayOutputStream.toByteArray();
 
+                                    photoURI = Base64.encodeToString(data, Base64.DEFAULT);
+
+                                    //reg_PhotoIV.setImageBitmap(bitmap);
+
+
                                     UploadTask uploadTask = filepath.putBytes(data);
                                     uploadTask.addOnFailureListener(new OnFailureListener() {
                                         @Override
@@ -203,6 +211,7 @@ public class doctor extends AppCompatActivity {
                                                     @Override
                                                     public void onSuccess(Uri uri) {
                                                         String ImageUrl = uri.toString();
+                                                        Toast.makeText(doctor.this, "iMAGE URL "+uri, Toast.LENGTH_SHORT).show();
                                                         Map newImageMap = new HashMap();
                                                         newImageMap.put("profileImageUrl", ImageUrl);
 

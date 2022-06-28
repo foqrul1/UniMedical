@@ -29,7 +29,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.bumptech.glide.Glide;
-import com.example.myapplication.attachments.AttachmentOption;
 import com.example.myapplication.util.PermissionUtils;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -129,7 +128,7 @@ public class MessageActivity extends AppCompatActivity {
         linearLayoutManager.setStackFromEnd(true);
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        profile_image = findViewById(R.id.profile_image);
+        profile_image = findViewById(R.id.profile_image_message);
         username = findViewById(R.id.username);
         btn_send = findViewById(R.id.btn_send);
         btn_img_send = findViewById(R.id.btn_image_send);
@@ -143,7 +142,7 @@ public class MessageActivity extends AppCompatActivity {
         user_status = intent.getStringExtra("status");
         fuser = FirebaseAuth.getInstance().getCurrentUser();
         storageRef_Docs = FirebaseStorage.getInstance().getReference("MessageDocs");
-        userImage = "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/profile-design-template-4c23db68ba79c4186fbd258aa06f48b3_screen.jpg?ts=1581063859";
+        //userImage = "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/profile-design-template-4c23db68ba79c4186fbd258aa06f48b3_screen.jpg?ts=1581063859";
 
        // initChatActions();
 
@@ -160,7 +159,7 @@ public class MessageActivity extends AppCompatActivity {
 
 
                 Glide.with(MessageActivity.this)
-                        .load(user.getImageURL())
+                        .load(user.getProfileImageUrl())
                         .placeholder(R.drawable.profile_pic)
                         .into(profile_image);
 
@@ -181,7 +180,7 @@ public class MessageActivity extends AppCompatActivity {
                 notify = true;
                 String msg = text_send.getText().toString();
                 String type = "text";
-                if (!msg.equals("")) {
+                if (!msg.equals("") && !(msg.trim().length()==0)) {
                     sendMessage(fuser.getUid(), userid, msg, type);
                 } else {
                     Toast.makeText(MessageActivity.this, "You can't send empty message", Toast.LENGTH_SHORT).show();
@@ -205,10 +204,6 @@ public class MessageActivity extends AppCompatActivity {
                     Toast.makeText(MessageActivity.this, "Image Activity click", Toast.LENGTH_SHORT).show();
 
 
-                   /* Intent intent = new Intent();
-                    intent.setType("image/*");
-                    intent.setAction(Intent.ACTION_GET_CONTENT);
-                    startActivityForResult(intent, IMAGE_REQUEST);*/
 
                     CropImage.activity()
                             .start(MessageActivity.this);

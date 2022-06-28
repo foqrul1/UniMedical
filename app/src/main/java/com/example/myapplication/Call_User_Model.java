@@ -57,12 +57,12 @@ public class Call_User_Model {
         this.id = id;
     }
 
-    public String getImageURL() {
+    public String getProfileImageUrl() {
         return profileImageUrl;
     }
 
-    public void setImageURL(String imageURL) {
-        this.profileImageUrl = imageURL;
+    public void setProfileImageUrl(String profileImageUrl) {
+        this.profileImageUrl = profileImageUrl;
     }
 
     public String getEmail() {

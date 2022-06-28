@@ -61,7 +61,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
 
 
 
-            Glide.with(mContext).load(image).placeholder(R.drawable.profile_pic).into(holder.imageMessage);
+            Glide.with(mContext).load(image).placeholder(R.drawable.ic_image_24).into(holder.imageMessage);
 
         }
         else if(chat.getType().equals("docs")){
@@ -70,7 +70,9 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
 
             holder.show_message.setVisibility(View.GONE);
             holder.imageMessage.setVisibility(View.VISIBLE);
-            holder.imageMessage.setImageDrawable(mContext.getDrawable(R.drawable.ic_doc__1_));
+            //holder.imageMessage.setImageDrawable(mContext.getDrawable(R.drawable.ic_doc__1_));
+            Glide.with(mContext).load(image).placeholder(R.drawable.ic_medical_services_24).into(holder.imageMessage);
+
 
             holder.imageMessage.setOnClickListener(new View.OnClickListener() {
                 @Override
