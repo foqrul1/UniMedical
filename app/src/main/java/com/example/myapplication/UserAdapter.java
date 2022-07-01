@@ -50,6 +50,22 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>{
     public void onBindViewHolder(@NonNull UserAdapter.ViewHolder holder, int position) {
         final Call_User_Model user = mUsers.get(position);
         holder.username.setText(user.getName());
+        if (user.getType().equals("Doctor") && !ischat){
+            holder.userItemSpeciality.setText(user.getSpeciality());
+            holder.UserItemAvailibiity.setText(user.getAvailable());
+            holder.userItemSpeciality.setVisibility(View.VISIBLE);
+            holder.UserItemAvailibiity.setVisibility(View.VISIBLE);
+            holder.userItemDepertment.setVisibility(View.GONE);
+            holder.UserItemReg.setVisibility(View.GONE);
+        }else if(user.getType().equals("patient") && !ischat){
+            holder.userItemDepertment.setText(user.getDept());
+            holder.UserItemReg.setText(user.getReg());
+            holder.userItemDepertment.setVisibility(View.VISIBLE);
+            holder.UserItemReg.setVisibility(View.VISIBLE);
+
+            holder.userItemSpeciality.setVisibility(View.GONE);
+            holder.UserItemAvailibiity.setVisibility(View.GONE);
+        }
 
         Glide.with(mContext)
                 .load(user.getProfileImageUrl())
@@ -103,6 +119,11 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>{
         private ImageView img_on;
         private ImageView img_off;
         private TextView last_msg;
+        private TextView userItemSpeciality;
+        private TextView UserItemAvailibiity;
+        private TextView userItemDepertment;
+        private TextView UserItemReg;
+
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -112,6 +133,10 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>{
             img_on = itemView.findViewById(R.id.img_on);
             img_off = itemView.findViewById(R.id.img_off);
             last_msg = itemView.findViewById(R.id.last_msg);
+            UserItemAvailibiity = itemView.findViewById(R.id.UserItemAvailibiity);
+            userItemSpeciality = itemView.findViewById(R.id.userItemSpeciality);
+            userItemDepertment = itemView.findViewById(R.id.userItemDepertment);
+            UserItemReg = itemView.findViewById(R.id.UserItemReg);
         }
     }
     private void lastMessage(final String userid, final TextView last_msg){

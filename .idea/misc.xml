@@ -13,6 +13,7 @@
         <entry key="..\:/Users/rahim/AndroidStudioProjects/UniMedicalSystem/app/src/main/res/drawable/button_good_news.xml" value="0.12708333333333333" />
         <entry key="..\:/Users/rahim/AndroidStudioProjects/UniMedicalSystem/app/src/main/res/drawable/doctor.xml" value="0.1125" />
         <entry key="..\:/Users/rahim/AndroidStudioProjects/UniMedicalSystem/app/src/main/res/drawable/ic_add_a_photo_black_24dp.xml" value="0.1" />
+        <entry key="..\:/Users/rahim/AndroidStudioProjects/UniMedicalSystem/app/src/main/res/drawable/ic_arrow_back_black_24dp.xml" value="0.2203125" />
         <entry key="..\:/Users/rahim/AndroidStudioProjects/UniMedicalSystem/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.1125" />
         <entry key="..\:/Users/rahim/AndroidStudioProjects/UniMedicalSystem/app/src/main/res/drawable/ic_language_black_24dp.xml" value="0.1125" />
         <entry key="..\:/Users/rahim/AndroidStudioProjects/UniMedicalSystem/app/src/main/res/drawable/ic_person_black_24dp.xml" value="0.1125" />
@@ -32,10 +33,11 @@
         <entry key="..\:/Users/rahim/AndroidStudioProjects/UniMedicalSystem/app/src/main/res/layout/chat_item_right.xml" value="0.22" />
         <entry key="..\:/Users/rahim/AndroidStudioProjects/UniMedicalSystem/app/src/main/res/layout/fragment_discuss.xml" value="0.15260416666666668" />
         <entry key="..\:/Users/rahim/AndroidStudioProjects/UniMedicalSystem/app/src/main/res/layout/fragment_home.xml" value="0.11927083333333334" />
+        <entry key="..\:/Users/rahim/AndroidStudioProjects/UniMedicalSystem/app/src/main/res/layout/fragment_profile.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/rahim/AndroidStudioProjects/UniMedicalSystem/app/src/main/res/layout/fragment_recent_chat.xml" value="0.1" />
         <entry key="..\:/Users/rahim/AndroidStudioProjects/UniMedicalSystem/app/src/main/res/layout/fragment_user_list.xml" value="0.1109375" />
         <entry key="..\:/Users/rahim/AndroidStudioProjects/UniMedicalSystem/app/src/main/res/layout/item_chat_actions.xml" value="0.14791666666666667" />
-        <entry key="..\:/Users/rahim/AndroidStudioProjects/UniMedicalSystem/app/src/main/res/layout/user_item.xml" value="0.1109375" />
+        <entry key="..\:/Users/rahim/AndroidStudioProjects/UniMedicalSystem/app/src/main/res/layout/user_item.xml" value="0.33" />
         <entry key="..\:/Users/rahim/AndroidStudioProjects/UniMedicalSystem/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />
         <entry key="..\:/Users/rahim/AndroidStudioProjects/UniMedicalSystem/app/src/main/res/xml/user_item.xml" value="0.1109375" />
         <entry key="app/src/main/res/drawable/background_left.xml" value="0.1945" />

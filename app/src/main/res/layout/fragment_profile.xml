@@ -1,14 +1,191 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#2196F3"
     tools:context=".ProfileFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:id="@+id/profile_toolbar">
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_weight="2"
+        android:layout_alignParentStart="true"
+        android:id="@+id/profile_toolbar2"/>
+    </LinearLayout>
+
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_alignParentBottom="true">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true">
 
-</FrameLayout>
+            <RelativeLayout
+                android:id="@+id/relLayout"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:layout_height="150dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/propfileImageIV"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:src="@drawable/doctor"
+                    android:textStyle="bold" />
+
+
+
+            </RelativeLayout>
+            <TextView
+                android:layout_below="@id/relLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Profile information :"
+                android:id="@+id/textViewPro"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:textColor="@color/colorWhite"
+                android:textSize="20sp"/>
+            <LinearLayout
+                android:layout_below="@id/textViewPro"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_alignParentBottom="true"
+                android:gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:boxStrokeColor="#000"
+                        app:hintTextAppearance="@color/black">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="your Name Here"
+                            android:inputType="text"
+                            android:textColorHint="#000"
+                            android:id="@+id/UserProfileName"
+                            android:textSize="18sp"
+                            android:textColor="#000"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:boxStrokeColor="#000"
+                        app:hintTextAppearance="@color/black">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="your Email Here"
+                            android:inputType="text"
+                            android:textColorHint="#000"
+                            android:id="@+id/UserProfileEmail"
+                            android:textSize="18sp"
+                            android:textColor="#000"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:boxStrokeColor="#000"
+                        app:hintTextAppearance="@color/black">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Enter your Reg No Here"
+                            android:inputType="number"
+                            android:textColorHint="#000"
+                            android:textSize="18sp"
+                            android:id="@+id/UserProfileID"
+                            android:textColor="#000"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        app:hintTextAppearance="@color/black"
+                        app:boxStrokeColor="#000">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="your Dept Here"
+                            android:textSize="18sp"
+                            android:textColorHint="#000"
+                            android:id="@+id/UserProfileDept"
+                            android:textColor="#000"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:boxStrokeColor="#000"
+                        app:hintTextAppearance="@color/black">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="your Mobile No Here"
+                            android:inputType="number"
+                            android:textColorHint="#000"
+                            android:textSize="18sp"
+                            android:id="@+id/UserProfileNumber"
+                            android:textColor="#000"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+
+
+                <Button
+                    android:id="@+id/profileUpdateBTN"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:padding="10dp"
+                    android:text="Edit Profile"
+                    android:visibility="gone"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:background="@color/colorWhite"
+                    android:textColor="@color/colorBlack" />
+                <Button
+                    android:id="@+id/profileSingOutBTN"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:padding="10dp"
+                    android:text="Sign Out"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:background="@android:color/holo_red_dark"
+                    android:textColor="@color/colorWhite" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>

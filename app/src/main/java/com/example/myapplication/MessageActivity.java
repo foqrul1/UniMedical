@@ -68,7 +68,7 @@ public class MessageActivity extends AppCompatActivity {
     TextView username;
 
     ProgressDialog pd;
-    StorageReference storageRef, storageRef_Audio, storageRef_Docs;
+    StorageReference storageRef, storageRef_Docs;
 
     FirebaseUser fuser;
     DatabaseReference reference;
@@ -142,9 +142,7 @@ public class MessageActivity extends AppCompatActivity {
         user_status = intent.getStringExtra("status");
         fuser = FirebaseAuth.getInstance().getCurrentUser();
         storageRef_Docs = FirebaseStorage.getInstance().getReference("MessageDocs");
-        //userImage = "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/profile-design-template-4c23db68ba79c4186fbd258aa06f48b3_screen.jpg?ts=1581063859";
 
-       // initChatActions();
 
 
         reference = FirebaseDatabase.getInstance().getReference("users").child(userid);
@@ -201,7 +199,7 @@ public class MessageActivity extends AppCompatActivity {
 
                 if (PermissionUtils.isPermissionGranted(MessageActivity.this,
                         PermissionUtils.SD_WRITE_PERMISSIONS, PermissionUtils.REQUEST_WRITE_STORAGE)) {
-                    Toast.makeText(MessageActivity.this, "Image Activity click", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(MessageActivity.this, "Image Activity click", Toast.LENGTH_SHORT).show();
 
 
 
@@ -430,39 +428,6 @@ public class MessageActivity extends AppCompatActivity {
 
 
 
-
-    /*private void initChatActions() {
-        chatActions = new ArrayList<>();
-        chatActions.add("Salam");
-        chatActions.add("W.Salam");
-        chatActions.add("Alhamdulillah");
-
-        ChatActionsAdapter chatActionsAdapter = new ChatActionsAdapter(chatActions, MessageActivity.this);
-        RecyclerView chatActions = findViewById(R.id.rv_actions);
-
-        LinearLayoutManager layoutManager =
-                new LinearLayoutManager(MessageActivity.this);
-        layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        chatActions.setLayoutManager(layoutManager);
-        chatActions.setAdapter(chatActionsAdapter);
-
-        chatActionsAdapter.setItemClickListener(new ItemClickListener() {
-            @Override
-            public void onItemClick(View view, int position) {
-                if (position == 0) {
-                    sendMessage(fuser.getUid(), userid, "Salam", "text");
-                } else if (position == 1) {
-
-
-                    sendMessage(fuser.getUid(), userid, "W. Salam", "text");
-                } else if (position == 2) {
-
-                    sendMessage(fuser.getUid(), userid, "Alhamdulillah", "text");
-                }
-            }
-        });
-
-    }*/
 
     //BITMAP IMAGE MSG
     /*@Override

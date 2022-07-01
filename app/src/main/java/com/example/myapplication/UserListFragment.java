@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -63,39 +64,59 @@ public class UserListFragment extends Fragment {
         lottieAnimationView=view.findViewById(R.id.loader_user);
 
         mUsers = new ArrayList<>();
-
-        readUsers();
-
-        search_users = view.findViewById(R.id.search_users);
-        search_users.addTextChangedListener(new TextWatcher() {
+        /*DatabaseReference mRef = FirebaseDatabase.getInstance().getReference().child(users).
+*/
+        final String[] value = new String[1];
+        FirebaseUser fUser = FirebaseAuth.getInstance().getCurrentUser();
+        String cuser = fUser.getUid();
+        DatabaseReference reference2 = FirebaseDatabase.getInstance().getReference().child("users").child(cuser);
+        reference2.addValueEventListener(new ValueEventListener() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                value[0] = (String) snapshot.child("type").getValue();
+                readUsers(value[0]);
 
+                search_users = view.findViewById(R.id.search_users);
+                search_users.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                        //searchUsers(charSequence.toString());
+                        searchUsers(charSequence.toString().toLowerCase(), value[0]);
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable editable) {
+
+                    }
+                });
             }
 
             @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                //searchUsers(charSequence.toString());
-                searchUsers(charSequence.toString().toLowerCase());
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
+            public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
+
+
+
+
 
     }
 
 
 
-    private void searchUsers(String s) {
+    private void searchUsers(String toLowerCase, String s) {
 
         final FirebaseUser fuser = FirebaseAuth.getInstance().getCurrentUser();
-        Query query = FirebaseDatabase.getInstance().getReference("users").orderByChild("phone" +
+        Query query = FirebaseDatabase.getInstance().getReference("users").orderByChild("Name" +
                 "")
-                .startAt(s)
-                .endAt(s+"\uf8ff");
+                .startAt(toLowerCase)
+                .endAt(toLowerCase+"\uf8ff");
 
         query.addValueEventListener(new ValueEventListener() {
             @Override
@@ -106,7 +127,7 @@ public class UserListFragment extends Fragment {
 
                     assert user != null;
                     assert fuser != null;
-                    if (!user.getId().equals(fuser.getUid())){
+                    if (!user.getType().equals(s)){
                         mUsers.add(user);
                     }
                 }
@@ -123,9 +144,10 @@ public class UserListFragment extends Fragment {
 
     }
 
-    private void readUsers() {
+    private void readUsers(String type) {
 
         final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        //Toast.makeText(getContext(), "typ is "+type, Toast.LENGTH_SHORT).show();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
 
         reference.addValueEventListener(new ValueEventListener() {
@@ -136,7 +158,7 @@ public class UserListFragment extends Fragment {
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         Call_User_Model user = snapshot.getValue(Call_User_Model.class);
 
-                        if (!user.getId().equals(firebaseUser.getUid())) {
+                        if (!user.getType().equals(type)) {
                             mUsers.add(user);
                         }
 

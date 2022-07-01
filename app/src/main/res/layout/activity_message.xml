@@ -83,10 +83,10 @@
 
         <EditText
             android:id="@+id/text_send"
-            android:layout_width="256dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginStart="66dp"
+            android:layout_marginStart="75dp"
             android:layout_toStartOf="@id/btn_send"
             android:layout_toEndOf="@id/btn_image_send"
             android:background="@android:color/transparent"
@@ -103,16 +103,23 @@
 
         <ImageView
             android:id="@+id/imageViewAttachment"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:layout_marginLeft="55dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="38dp"
             android:src="@drawable/ic_file_doc" />
+        <ImageView
+            android:id="@+id/imagePrescription"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="75dp"
+            android:src="@drawable/ic_medical_services_24"/>
 
         <ImageButton
             android:id="@+id/btn_image_send"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_alignParentStart="true"
+            android:layout_marginStart="2dp"
             android:backgroundTint="@color/white"
             android:src="@drawable/ic_add_a_photo_black_24dp"
             android:visibility="visible"

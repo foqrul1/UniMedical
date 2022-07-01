@@ -16,16 +16,14 @@
         android:src="@mipmap/ic_launcher"/>
 
     <TextView
+        android:id="@+id/username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_toEndOf="@id/profile_image"
         android:text="username"
         android:textColor="@color/white"
-        android:id="@+id/username"
-        android:layout_toEndOf="@id/profile_image"
-        android:layout_marginStart="10dp"
-        android:paddingStart="20dp"
-        android:paddingEnd="5dp"
-        android:textSize="18sp"/>
+        android:textSize="18sp" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="15dp"
@@ -54,16 +52,62 @@
         android:layout_toEndOf="@id/profile_image"/>
 
     <TextView
+        android:id="@+id/last_msg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/username"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
         android:layout_toEndOf="@id/profile_image"
-        android:layout_marginStart="10dp"
+        android:maxLines="1"
         android:paddingStart="22dp"
         android:paddingEnd="5dp"
-        android:id="@+id/last_msg"
-        android:textColor="#101010"
-        android:maxLines="1"/>
+        android:textColor="#101010" />
+
+    <TextView
+        android:id="@+id/userItemSpeciality"
+        android:layout_width="75dp"
+        android:layout_height="25dp"
+        android:layout_alignParentEnd="true"
+        android:textColor="#fff"
+        android:visibility="gone"
+        android:layout_marginEnd="24dp"
+        android:text="Speciality" />
+
+    <TextView
+        android:id="@+id/UserItemAvailibiity"
+        android:layout_width="75dp"
+        android:layout_height="25dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="24dp"
+        android:textColor="#fff"
+        android:layout_marginTop="10dp"
+        android:visibility="gone"
+        android:layout_marginBottom="10dp"
+        android:layout_below="@+id/userItemSpeciality"
+        android:text="Availibility" />
+    <TextView
+        android:id="@+id/userItemDepertment"
+        android:layout_width="75dp"
+        android:layout_height="25dp"
+        android:layout_alignParentEnd="true"
+        android:textColor="#fff"
+        android:visibility="gone"
+        android:layout_marginEnd="24dp"
+        android:text="Department" />
+
+    <TextView
+        android:id="@+id/UserItemReg"
+        android:layout_width="75dp"
+        android:layout_height="25dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="24dp"
+        android:textColor="#fff"
+        android:layout_marginTop="10dp"
+        android:visibility="gone"
+        android:layout_marginBottom="10dp"
+        android:layout_below="@+id/userItemDepertment"
+        android:text="Availibility" />
+
 
 </RelativeLayout>

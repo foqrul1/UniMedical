@@ -11,6 +11,7 @@ public class Call_User_Model {
     private String Reg;
     private String Speciality;
     private String Dept;
+    private String type;
 
 
 
@@ -19,7 +20,7 @@ public class Call_User_Model {
     public Call_User_Model() {
     }
 
-    public Call_User_Model(String name, String userUid, String imageURL, String email, String available, String search, String phone, String reg, String Speciality, String dept, String Status) {
+    public Call_User_Model(String type, String name, String userUid, String imageURL, String email, String available, String search, String phone, String reg, String Speciality, String dept, String Status) {
         this.Name = name;
         this.id = userUid;
         this.profileImageUrl = imageURL;
@@ -31,6 +32,7 @@ public class Call_User_Model {
         this.Speciality = Speciality;
         this.Dept = dept;
         this.Status = Status;
+        this.type = type;
 
     }
 
@@ -119,6 +121,14 @@ public class Call_User_Model {
 
     public void setDept(String dept) {
         Dept = dept;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
 
